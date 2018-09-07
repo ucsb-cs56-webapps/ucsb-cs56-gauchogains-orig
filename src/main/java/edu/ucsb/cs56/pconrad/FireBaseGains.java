@@ -15,13 +15,9 @@ import java.util.Scanner;
 
 public class FireBaseGains {
     public static void main(String[] args) {
-	
 	getHerokuAssignedPort();
 
-	String strtemp = getKeyString();
-	strtemp = massageWhitespace(strtemp);
-	
-	initializeFireBase(strtemp);
+	initializeFireBase();
 
 	System.out.println("");
 	System.out.println("(Don't worry about the warnings below about SLF4J... we'll deal with those later)");
@@ -44,11 +40,11 @@ public class FireBaseGains {
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
-    static void initializeFireBase(String serviceAccount) {
+    static void initializeFireBase() {
 		try {	
-			//FileInputStream serviceAccount = new FileInputStream("src/resources/firebase-credentials.json");
+			FileInputStream serviceAccount = new FileInputStream("src/resources/firebasecredentials.json");
 			FirebaseOptions options = new FirebaseOptions.Builder()
-    				.setCredentials(GoogleCredentials.fromStream(new ByteArrayInputStream(serviceAccount.getBytes())))
+    				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
     				.setDatabaseUrl("https://gauchogains-f67f0.firebaseio.com")
     				.build();
 			FirebaseApp.initializeApp(options);
@@ -60,27 +56,4 @@ public class FireBaseGains {
 			spark.Spark.get("/",(req,res) -> "serviceAccount invalid");
 		}	
 	}
-    private static String massageWhitespace(String s) {
-	    String newString = "";
-	    for (Character c : s.toCharArray()) {
-		    if ("00a0".equals(Integer.toHexString(c | 0x10000).substring(1))) {
-			    newString += " ";
-		    } else {
-			    newString += c;
-		    }
-	    }
-	    
-	    return newString;
-    }   
-
-   static String getKeyString() {
-	   try {
-		   FileInputStream serviceAccount = new FileInputStream("src/resources/firebase-credentials.json");
-		   String inputStreamString = new Scanner(serviceAccount, "UTF-8").useDelimiter("\\A").next();
-		   return inputStreamString;
-	   }
-	   catch (FileNotFoundException e) {
-	   	return "fail";
-	   }
-   }
 }
