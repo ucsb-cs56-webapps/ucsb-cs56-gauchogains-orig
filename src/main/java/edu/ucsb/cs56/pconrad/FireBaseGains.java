@@ -8,7 +8,7 @@ import static spark.Spark.port;
  *
  */
 
-public class SparkDemo01 {
+public class FireBaseGains {
     public static void main(String[] args) {
 
         port(getHerokuAssignedPort());

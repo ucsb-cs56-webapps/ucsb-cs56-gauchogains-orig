@@ -9,14 +9,14 @@
     <!-- project coordinates - values which uniquely identify this project -->
 
   <groupId>edu.ucsb.cs56.pconrad</groupId>
-  <artifactId>sparkjava-demo-01</artifactId>
+  <artifactId>firebase-gains</artifactId>
   <version>1.0</version>
-  <url>https://ucsb-cs56-pconrad.github.io/sparkjava-01</url>
+  <url>https://github.com/Mawga/ucsb-cs56-gauchogains</url>
   
   <!-- configure what mvn package produces -->
   
   <packaging>jar</packaging>
-  <name>sparkjava-demo-01</name>
+  <name>firebase-gains</name>
   
   <!-- what version of Java should we use and what encoding for files? -->
   <properties>
@@ -42,7 +42,13 @@
       <artifactId>spark-core</artifactId>
       <version>2.5</version>
     </dependency>
-    
+	
+	<!-- Firebase dependency -->
+    	<dependency>
+		<groupId>com.google.firebase</groupId>
+		<artifactId>firebase-admin</artifactId>
+		<version>6.4.0</version>
+	</dependency>	
   </dependencies>
 
   <!-- For use with github pages, to publish the site to the /docs subdirectory -->
@@ -93,7 +99,7 @@
             <configuration>
               <archive>
                 <manifest>
-		    <mainClass>edu.ucsb.cs56.pconrad.SparkDemo01</mainClass>
+		    <mainClass>edu.ucsb.cs56.pconrad.FireBaseGains</mainClass>
                 </manifest>
               </archive>
               <descriptorRefs>
@@ -117,7 +123,7 @@
 	  </execution>
 	</executions>
 	<configuration>
-	  <mainClass>edu.ucsb.cs56.pconrad.SparkDemo01</mainClass> 
+	  <mainClass>edu.ucsb.cs56.pconrad.FireBaseGains</mainClass> 
 	</configuration>
       </plugin>
 
@@ -132,7 +138,7 @@
           <processTypes>
             <!-- Tell Heroku how to launch your application -->
             <!-- You might have to remove the ./ in front   -->
-            <web>java -jar ./target/sparkjava-demo-1.0-jar-with-dependencies.jar</web>
+            <web>java -jar target/firebase-gains-1.0-jar-with-dependencies.jar</web>
           </processTypes>
 	</configuration>
       </plugin>
@@ -142,5 +148,3 @@
   </build>
   
 </project>
-
-
