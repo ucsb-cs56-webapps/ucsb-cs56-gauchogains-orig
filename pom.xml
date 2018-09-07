@@ -9,7 +9,7 @@
     <!-- project coordinates - values which uniquely identify this project -->
 
   <groupId>edu.ucsb.cs56.gaucho_gains</groupId>
-  <artifactId>Project</artifactId>
+  <artifactId>gaucho-gains</artifactId>
   <version>1.0</version>
   <url>https://ucsb-cs56-pconrad.github.io/sparkjava-mustache-example</url>
   
@@ -22,8 +22,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <userDefinedMainClass>edu.ucsb.cs56.gaucho_gains.Project</userDefinedMainClass>
-    <userDefinedHerokuApp>gauchogains</userDefinedHerokuApp>
+    <userDefinedMainClass>edu.ucsb.cs56.gaucho_gains.GauchoGains</userDefinedMainClass>
+    <userDefinedHerokuApp>ucsb.cs56.mawga.gauchogains</userDefinedHerokuApp>
   </properties>
 
   <!-- what other software does our project depend on (third-party JARs, etc.) -->
@@ -48,8 +48,7 @@
        <groupId>org.slf4j</groupId>
        <artifactId>slf4j-log4j12</artifactId>
        <version>1.7.5</version>
-  </dependency>
-
+</dependency>
   
     <!-- JUnit unit testing (https://junit.org/) -->    
     <dependency>
@@ -165,7 +164,7 @@
           <jdkVersion>1.8</jdkVersion>
           <!-- Use your own application name -->
 	  <!-- at Heroku CLI, use heroku apps to list, or use Heroku Dashboard -->
-          <appName>gauchogains</appName>
+          <appName>ucsb-cs56-mawga-gauchogains</appName>
           <processTypes>
             <!-- Tell Heroku how to launch your application -->
             <!-- You might have to remove the ./ in front   -->

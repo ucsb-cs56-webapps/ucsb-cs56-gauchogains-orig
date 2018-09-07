@@ -19,7 +19,7 @@ import static spark.Spark.post;
  *
  */
 
-public class Project {
+public class GauchoGains {
 
 	public static final String CLASSNAME="Project";
 	
