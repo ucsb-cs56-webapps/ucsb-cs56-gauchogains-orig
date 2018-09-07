@@ -6,16 +6,14 @@ import com.google.auth.oauth2.GoogleCredentials;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.File;
-import java.io.ByteArrayInputStream;
-import java.util.Scanner;
 /**
  * Hello world!
  *
  */
 
 public class FireBaseGains {
-    public static void main(String[] args) {
+    /*
+	public static void main(String[] args) {
 	port(getHerokuAssignedPort());
 	System.out.println("beginning");
 	initializeFireBase();
@@ -44,6 +42,7 @@ public class FireBaseGains {
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+    */
     static void initializeFireBase() {
 		try {	
 			System.out.println("1");
