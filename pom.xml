@@ -48,7 +48,14 @@
 		<groupId>com.google.firebase</groupId>
 		<artifactId>firebase-admin</artifactId>
 		<version>6.4.0</version>
-	</dependency>	
+	</dependency>
+
+	<dependency>
+  		<groupId>com.google.api-client</groupId>
+		<artifactId>google-api-client</artifactId>
+  		<version>1.24.1</version>
+	</dependency>
+
   </dependencies>
 
   <!-- For use with github pages, to publish the site to the /docs subdirectory -->
