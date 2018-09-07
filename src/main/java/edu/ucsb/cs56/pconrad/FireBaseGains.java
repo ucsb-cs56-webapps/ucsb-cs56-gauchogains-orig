@@ -6,6 +6,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.File;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 /**
@@ -15,9 +16,11 @@ import java.util.Scanner;
 
 public class FireBaseGains {
     public static void main(String[] args) {
-	getHerokuAssignedPort();
-
+	port(getHerokuAssignedPort());
+	System.out.println("beginning");
 	initializeFireBase();
+	System.out.println("end");
+
 
 	System.out.println("");
 	System.out.println("(Don't worry about the warnings below about SLF4J... we'll deal with those later)");
@@ -25,12 +28,13 @@ public class FireBaseGains {
 	System.out.println("In browser, visit: http://localhost:" + getHerokuAssignedPort() + "/hello");
 	System.out.println("");
         
+
 	spark.Spark.get("/", (req, res) -> "Hello World");
 		spark.Spark.get("/hello", (req, res) -> "Hello World");
 		spark.Spark.get("/bye", (req, res) -> "Goodbye World");
 		spark.Spark.get("/yo", (req, res) -> "S'up World");
 		spark.Spark.get("/tension", (req, res) -> "Midterm next week.  No problem dude");		
-	
+	System.out.println("endapp");
 	}
 	
     static int getHerokuAssignedPort() {
@@ -42,17 +46,22 @@ public class FireBaseGains {
     }
     static void initializeFireBase() {
 		try {	
-			FileInputStream serviceAccount = new FileInputStream("src/resources/firebasecredentials.json");
+			System.out.println("1");
+			FileInputStream serviceAccount = new FileInputStream("target/classes/firebase-credentials.json");
 			FirebaseOptions options = new FirebaseOptions.Builder()
     				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
     				.setDatabaseUrl("https://gauchogains-f67f0.firebaseio.com")
     				.build();
+			System.out.println("2");
 			FirebaseApp.initializeApp(options);
+			System.out.println("3");
 		}	
 		catch (FileNotFoundException e) {
+			System.out.println("4");
 			spark.Spark.get("/",(req,res) -> "FileNotFound");
 		}
 		catch (IOException e) {
+			System.out.println("5");
 			spark.Spark.get("/",(req,res) -> "serviceAccount invalid");
 		}	
 	}
